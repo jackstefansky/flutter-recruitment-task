@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'products_page.g.dart';
@@ -22,7 +23,7 @@ class ProductsPage {
 
 @JsonSerializable()
 class Product {
-  Product({
+  const Product({
     required this.id,
     required this.name,
     required this.mainImage,
@@ -52,7 +53,7 @@ class Product {
 
 @JsonSerializable()
 class Offer {
-  Offer({
+  const Offer({
     required this.skuId,
     required this.sellerId,
     required this.sellerName,
@@ -86,8 +87,8 @@ class Offer {
 }
 
 @JsonSerializable()
-class Tag {
-  Tag({
+class Tag extends Equatable {
+  const Tag({
     required this.tag,
     required this.label,
     required this.color,
@@ -100,6 +101,9 @@ class Tag {
   final String label;
   final String color;
   final String labelColor;
+
+  @override
+  List<Object> get props => [tag, label, color, labelColor];
 }
 
 @JsonSerializable()
